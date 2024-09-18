@@ -1,0 +1,231 @@
+# English translations for amazonianvoices.
+# Copyright (C) 2024 ORGANIZATION
+# This file is distributed under the same license as the amazonianvoices
+# project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: amazonianvoices 0.0\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-09-18 17:20+0200\n"
+"PO-Revision-Date: 2024-09-18 17:21+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.13.0\n"
+
+#: amazonianvoices/__init__.py:12
+msgid "Languages"
+msgstr "Doculects"
+
+#: amazonianvoices/__init__.py:13
+msgid "Parameters"
+msgstr "Concepts"
+
+#: amazonianvoices/__init__.py:14 amazonianvoices/datatables.py:114
+#: amazonianvoices/datatables.py:133
+#: amazonianvoices/templates/language/detail_html.mako:4
+#: amazonianvoices/templates/language/detail_html.mako:6
+msgid "Language"
+msgstr "Doculect"
+
+#: amazonianvoices/__init__.py:15
+#: amazonianvoices/templates/parameter/detail_html.mako:9
+#: amazonianvoices/templates/parameter/detail_html.mako:13
+#: amazonianvoices/templates/parameter/detail_html.mako:15
+#: amazonianvoices/templates/parameter/detail_html.mako:19
+#: amazonianvoices/templates/parameter/detail_html.mako:21
+msgid "Parameter"
+msgstr "Concepts"
+
+#: amazonianvoices/__init__.py:16
+msgid "Contributors"
+msgstr ""
+
+#: amazonianvoices/__init__.py:17
+msgid "Download"
+msgstr ""
+
+#: amazonianvoices/__init__.py:18
+msgid "Contact"
+msgstr ""
+
+#: amazonianvoices/__init__.py:19
+msgid "Credits"
+msgstr ""
+
+#: amazonianvoices/__init__.py:20
+msgid "Legal"
+msgstr ""
+
+#: amazonianvoices/__init__.py:21
+msgid "Home"
+msgstr ""
+
+#: amazonianvoices/__init__.py:22
+msgid "You can contact us via email at"
+msgstr ""
+
+#: amazonianvoices/__init__.py:25
+msgid "Icon size"
+msgstr ""
+
+#: amazonianvoices/__init__.py:26
+msgid "Show/hide Labels"
+msgstr ""
+
+#: amazonianvoices/__init__.py:29
+msgid "Next"
+msgstr ""
+
+#: amazonianvoices/__init__.py:30
+msgid "Previous"
+msgstr ""
+
+#: amazonianvoices/__init__.py:31
+msgid "First"
+msgstr ""
+
+#: amazonianvoices/__init__.py:32
+msgid "Last"
+msgstr ""
+
+#: amazonianvoices/__init__.py:33
+msgid "No data available in table"
+msgstr ""
+
+#: amazonianvoices/__init__.py:34
+msgid "Showing _START_ to _END_ of _TOTAL_ entries"
+msgstr ""
+
+#: amazonianvoices/__init__.py:35
+msgid "Showing 0 to 0 of 0 entries"
+msgstr ""
+
+#: amazonianvoices/__init__.py:36
+msgid "(filtered from _MAX_ total entries)"
+msgstr ""
+
+#: amazonianvoices/__init__.py:37
+msgid "Show _MENU_ entries"
+msgstr ""
+
+#: amazonianvoices/__init__.py:38
+msgid "Loading..."
+msgstr ""
+
+#: amazonianvoices/__init__.py:39
+msgid "Processing..."
+msgstr ""
+
+#: amazonianvoices/__init__.py:40
+msgid "Search:"
+msgstr ""
+
+#: amazonianvoices/__init__.py:41
+msgid "No matching records found"
+msgstr ""
+
+#: amazonianvoices/datatables.py:39 amazonianvoices/datatables.py:143
+msgid "Name"
+msgstr ""
+
+#: amazonianvoices/datatables.py:43
+msgid "Family"
+msgstr ""
+
+#: amazonianvoices/datatables.py:47
+msgid "# concepts"
+msgstr ""
+
+#: amazonianvoices/datatables.py:48
+msgid "number of concepts per language"
+msgstr ""
+
+#: amazonianvoices/datatables.py:51 amazonianvoices/datatables.py:162
+msgid "# words"
+msgstr ""
+
+#: amazonianvoices/datatables.py:52
+msgid "number of words per language"
+msgstr ""
+
+#: amazonianvoices/datatables.py:55
+msgid "# audio"
+msgstr ""
+
+#: amazonianvoices/datatables.py:56
+msgid "number of sound files per language"
+msgstr ""
+
+#: amazonianvoices/datatables.py:92 amazonianvoices/datatables.py:124
+#: amazonianvoices/datatables.py:159
+msgid "English"
+msgstr ""
+
+#: amazonianvoices/datatables.py:97 amazonianvoices/datatables.py:129
+msgid "Semantic Field"
+msgstr ""
+
+#: amazonianvoices/datatables.py:103 amazonianvoices/datatables.py:160
+msgid "Spanish"
+msgstr ""
+
+#: amazonianvoices/datatables.py:106 amazonianvoices/datatables.py:112
+#: amazonianvoices/datatables.py:121
+msgid "Word"
+msgstr ""
+
+#: amazonianvoices/datatables.py:107 amazonianvoices/datatables.py:113
+msgid "Segments"
+msgstr ""
+
+#: amazonianvoices/datatables.py:144
+msgid "Role"
+msgstr ""
+
+#: amazonianvoices/datatables.py:163
+msgid "number of words per concept"
+msgstr ""
+
+#: amazonianvoices/templates/download.mako:4
+msgid "Downloads"
+msgstr ""
+
+#: amazonianvoices/templates/download.mako:8
+msgid "Amazonian Voices serves the latest"
+msgstr ""
+
+#: amazonianvoices/templates/download.mako:9
+msgid "released version"
+msgstr ""
+
+#: amazonianvoices/templates/download.mako:10
+msgid "of data curated at"
+msgstr ""
+
+#: amazonianvoices/templates/download.mako:12
+msgid "All released version are accessible via"
+msgstr ""
+
+#: amazonianvoices/templates/download.mako:14
+msgid "on ZENODO as well"
+msgstr ""
+
+#: amazonianvoices/templates/dataset/detail_html.mako:19
+msgid "Welcome to"
+msgstr ""
+
+#: amazonianvoices/templates/dataset/detail_html.mako:22
+msgid "Amazonian Voices presents phonetically-transcribed primary recordings."
+msgstr ""
+
+#: amazonianvoices/templates/dataset/detail_html.mako:26
+msgid "Cite the Amazonian Voices dataset as"
+msgstr ""
+
