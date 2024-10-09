@@ -6,6 +6,7 @@ from clld.web.datatables.contributor import Contributors
 from clld.web.datatables.value import Values
 from clld.web.datatables.parameter import Parameters
 from clld.web.util import concepticon
+from clld.web.util.glottolog import url
 from clld.web.util.htmllib import HTML
 from clld.web.util.helpers import map_marker_img
 from clld.db.models import common
@@ -16,6 +17,13 @@ from amazonianvoices import models
 
 
 _ = lambda s: s
+
+
+class AVGlottologCol(Col):
+    def format(self, item):
+        if item.glottocode:
+            return HTML.a(item.glottocode, href=url(item.glottocode))
+        return ''
 
 
 class LongTableMixin:
@@ -37,6 +45,7 @@ class Languages(LongTableMixin, datatables.Languages):
     def col_defs(self):
         return [
             LinkCol(self, 'name', sTitle=self.req._('Name')),
+            AVGlottologCol(self, 'Glottocode', model_col=models.Variety.glottocode),
             FamilyCol(
                 self,
                 'family',

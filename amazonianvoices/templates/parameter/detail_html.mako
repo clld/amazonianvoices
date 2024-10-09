@@ -21,7 +21,9 @@
         <h2>${_('Parameter')} "${ctx.name}"</h2>
     %endif
 %endif
-
+% if ctx.scientific_name:
+    <i>Lat.: ${ctx.scientific_name}</i>
+% endif
 <div style="clear: both"/>
 ${(map_ or request.map).render()}
 

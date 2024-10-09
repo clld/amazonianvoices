@@ -48,6 +48,7 @@
 
 
 <%def name="sidebar()">
+    ${util.codes(ctx)}
     % if ctx.contribution.contributor_assocs:
         <h4>Contributors</h4>
         <ul class="unstyled">
@@ -59,4 +60,7 @@
         </ul>
     % endif
     ${util.language_meta()}
+    % if ctx.family:
+        <strong>${_('Family')}</strong>: ${ctx.family}
+    % endif
 </%def>
