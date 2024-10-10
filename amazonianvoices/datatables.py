@@ -39,7 +39,7 @@ class FamilyCol(Col):
 class Languages(LongTableMixin, datatables.Languages):
     def get_default_options(self):
         opts = super(Languages, self).get_default_options()
-        opts['aaSorting'] = [[1, 'asc'], [0, 'asc']]
+        opts['aaSorting'] = [[2, 'asc'], [0, 'asc']]
         return opts
 
     def col_defs(self):
@@ -90,7 +90,7 @@ class Words(LongTableMixin, Values):
 
     def get_default_options(self):
         opts = super(Values, self).get_default_options()
-        opts['aaSorting'] = [[1, 'asc'], [0, 'asc']]
+        opts['aaSorting'] = [[0, 'asc']]
         return opts
 
     def col_defs(self):
@@ -146,7 +146,7 @@ class Words(LongTableMixin, Values):
         ]
 
 
-class VVContributors(Contributors):
+class AVContributors(Contributors):
     def col_defs(self):
         return [
             Col(self, 'name', sTitle=self.req._('Name')),
@@ -173,6 +173,7 @@ class Concepts(LongTableMixin, Parameters):
                 model_col=models.Concept.count_lexemes),
             # ConcepticonCol(self, 'concepticon'),
             Col(self, 'concepticon_semantic_field',
+                sTitle=self.req._('Semantic Field'),
                 model_col=models.Concept.concepticon_semantic_field,
                 choices=get_distinct_values(models.Concept.concepticon_semantic_field)),
         ]
@@ -182,4 +183,4 @@ def includeme(config):
     config.register_datatable('languages', Languages)
     config.register_datatable('parameters', Concepts)
     config.register_datatable('values', Words)
-    config.register_datatable('contributors', VVContributors)
+    config.register_datatable('contributors', AVContributors)

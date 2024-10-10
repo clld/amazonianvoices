@@ -8,8 +8,8 @@
 
 <div class="tabbable" style="clear: both">
     <ul class="nav nav-tabs">
-        <li class="active"><a href="#words" data-toggle="tab">Words</a></li>
-        <li><a href="#ipa" data-toggle="tab">Sound Inventory</a></li>
+        <li class="active"><a href="#words" data-toggle="tab">${_('Values')}</a></li>
+        <li><a href="#ipa" data-toggle="tab">${_('Sound Inventory')}</a></li>
     </ul>
     <div class="tab-content" style="overflow: scroll;">
         <div id="words" class="tab-pane active">
@@ -20,7 +20,7 @@
             ${vowels_html|n}
 
             <table class="table table-condensed table-nonfluid">
-                <caption>Other phonemes</caption>
+                <caption>${_('Other phonemes')}</caption>
                 <tbody>
                     % for seg in uncovered:
                         % if seg.sound_bipa != '+':

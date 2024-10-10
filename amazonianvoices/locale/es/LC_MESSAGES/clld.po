@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: amazonianvoices 0.0\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-10-09 13:46+0200\n"
+"POT-Creation-Date: 2024-10-10 13:24+0200\n"
 "PO-Revision-Date: 2024-09-18 17:21+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es\n"
@@ -31,7 +31,7 @@ msgstr "Conceptos"
 #: amazonianvoices/datatables.py:142
 #: amazonianvoices/templates/language/detail_html.mako:4
 #: amazonianvoices/templates/language/detail_html.mako:6
-#: amazonianvoices/templates/value/detail_html.mako:9
+#: amazonianvoices/templates/value/detail_html.mako:10
 msgid "Language"
 msgstr "Idioma"
 
@@ -41,95 +41,126 @@ msgstr "Idioma"
 #: amazonianvoices/templates/parameter/detail_html.mako:15
 #: amazonianvoices/templates/parameter/detail_html.mako:19
 #: amazonianvoices/templates/parameter/detail_html.mako:21
-#: amazonianvoices/templates/value/detail_html.mako:11
+#: amazonianvoices/templates/value/detail_html.mako:12
 msgid "Parameter"
-msgstr "Conceptos"
+msgstr "Concepto"
 
 #: amazonianvoices/__init__.py:16
+#: amazonianvoices/templates/language/detail_html.mako:11
+#: amazonianvoices/templates/value/detail_html.mako:4
+#: amazonianvoices/templates/value/index_html.mako:4
+#: amazonianvoices/templates/value/index_html.mako:7
+msgid "Values"
+msgstr "Palabras"
+
+#: amazonianvoices/__init__.py:17
+#: amazonianvoices/templates/value/detail_html.mako:7
+msgid "Value"
+msgstr "Palabra"
+
+#: amazonianvoices/__init__.py:18
 msgid "Contributors"
 msgstr ""
 
-#: amazonianvoices/__init__.py:17
-msgid "Download"
-msgstr ""
-
-#: amazonianvoices/__init__.py:18
-msgid "Contact"
-msgstr ""
-
 #: amazonianvoices/__init__.py:19
+msgid "Download"
+msgstr "Descarga"
+
+#: amazonianvoices/__init__.py:20
+msgid "Contact"
+msgstr "Contacto"
+
+#: amazonianvoices/__init__.py:21
 msgid "Credits"
 msgstr ""
 
-#: amazonianvoices/__init__.py:20
+#: amazonianvoices/__init__.py:22
 msgid "Legal"
 msgstr ""
 
-#: amazonianvoices/__init__.py:21
+#: amazonianvoices/__init__.py:23
 msgid "Home"
 msgstr "Página de inicio"
 
-#: amazonianvoices/__init__.py:22
+#: amazonianvoices/__init__.py:24
 msgid "You can contact us via email at"
 msgstr "Puede ponerse en contacto con nosotros por correo electrónico en"
 
 #: amazonianvoices/__init__.py:25
+msgid "Latitude"
+msgstr "Latitud"
+
+#: amazonianvoices/__init__.py:26
+msgid "Longitude"
+msgstr "Longitud"
+
+#: amazonianvoices/__init__.py:27
+msgid "Map"
+msgstr "Mapa"
+
+#: amazonianvoices/__init__.py:30
 msgid "Icon size"
 msgstr "Tamaño del icono"
 
-#: amazonianvoices/__init__.py:26
+#: amazonianvoices/__init__.py:31
 msgid "Show/hide Labels"
 msgstr "Mostrar/ocultar Labels"
 
-#: amazonianvoices/__init__.py:29
+#: amazonianvoices/__init__.py:34
 msgid "Next"
 msgstr "Próximo"
 
-#: amazonianvoices/__init__.py:30
+#: amazonianvoices/__init__.py:35
 msgid "Previous"
 msgstr "Anterior"
 
-#: amazonianvoices/__init__.py:31
+#: amazonianvoices/__init__.py:36
 msgid "First"
 msgstr ""
 
-#: amazonianvoices/__init__.py:32
+#: amazonianvoices/__init__.py:37
 msgid "Last"
 msgstr ""
 
-#: amazonianvoices/__init__.py:33
+#: amazonianvoices/__init__.py:38
 msgid "No data available in table"
 msgstr ""
 
-#: amazonianvoices/__init__.py:34
+#: amazonianvoices/__init__.py:39
 msgid "Showing _START_ to _END_ of _TOTAL_ entries"
 msgstr "Mostrando entradas desde _START_ hasta _END_ de _TOTAL_"
 
-#: amazonianvoices/__init__.py:35
+#: amazonianvoices/__init__.py:40
 msgid "Showing 0 to 0 of 0 entries"
 msgstr "Mostrando 0 a 0 de 0 entradas"
 
-#: amazonianvoices/__init__.py:36
+#: amazonianvoices/__init__.py:41
 msgid "(filtered from _MAX_ total entries)"
 msgstr "filtrado de _MAX_ entradas totales"
 
-#: amazonianvoices/__init__.py:37
+#: amazonianvoices/__init__.py:42
 msgid "Show _MENU_ entries"
 msgstr "Mostrar _MENU_ entradas"
 
-#: amazonianvoices/__init__.py:38
+#: amazonianvoices/__init__.py:43
 msgid "Loading..."
 msgstr "Cargando..."
 
-#: amazonianvoices/__init__.py:39
+#: amazonianvoices/__init__.py:44
 msgid "Processing..."
 msgstr ""
 
-#: amazonianvoices/__init__.py:40
+#: amazonianvoices/__init__.py:45
 msgid "Search:"
 msgstr "Busca:"
 
-#: amazonianvoices/__init__.py:41
+#: amazonianvoices/__init__.py:46
+#, fuzzy
+#| msgid "Search:"
+msgid "Search"
+msgstr "Busca:"
+
+#: amazonianvoices/__init__.py:47
 msgid "No matching records found"
 msgstr "No se han encontrado registros coincidentes"
 
@@ -172,6 +203,7 @@ msgid "English"
 msgstr "Inglés"
 
 #: amazonianvoices/datatables.py:106 amazonianvoices/datatables.py:138
+#: amazonianvoices/datatables.py:176
 msgid "Semantic Field"
 msgstr "Campo semántico"
 
@@ -232,11 +264,23 @@ msgstr "Amazonian Voices presenta grabaciones primarias transcritas fonéticamen
 msgid "Cite the Amazonian Voices dataset as"
 msgstr "Cite el conjunto de datos Amazonian Voices como"
 
-#: amazonianvoices/templates/value/detail_html.mako:6
-msgid "Value"
-msgstr ""
+#: amazonianvoices/templates/language/detail_html.mako:12
+msgid "Sound Inventory"
+msgstr "Inventario de sonidos"
 
-#: amazonianvoices/templates/value/detail_html.mako:24
+#: amazonianvoices/templates/language/detail_html.mako:23
+msgid "Other phonemes"
+msgstr "Otros fonemas"
+
+#: amazonianvoices/templates/value/detail_html.mako:25
 msgid "Sentences"
 msgstr ""
+
+# | msgid "Semantic Field"
+#~ msgid "Semantic Fields"
+#~ msgstr "Campo semántico"
+
+# | msgid "Word"
+#~ msgid "Words"
+#~ msgstr "Palabras"
 
