@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: amazonianvoices 0.0\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-10-10 13:24+0200\n"
+"POT-Creation-Date: 2024-10-10 15:22+0200\n"
 "PO-Revision-Date: 2024-09-18 17:21+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es\n"
@@ -20,10 +20,12 @@ msgstr ""
 "Generated-By: Babel 2.13.0\n"
 
 #: amazonianvoices/__init__.py:12
+#: amazonianvoices/templates/dataset/detail_html.mako:20
 msgid "Languages"
 msgstr "Idiomas"
 
 #: amazonianvoices/__init__.py:13
+#: amazonianvoices/templates/dataset/detail_html.mako:24
 msgid "Parameters"
 msgstr "Conceptos"
 
@@ -46,6 +48,7 @@ msgid "Parameter"
 msgstr "Concepto"
 
 #: amazonianvoices/__init__.py:16
+#: amazonianvoices/templates/dataset/detail_html.mako:28
 #: amazonianvoices/templates/language/detail_html.mako:11
 #: amazonianvoices/templates/value/detail_html.mako:4
 #: amazonianvoices/templates/value/index_html.mako:4
@@ -154,9 +157,9 @@ msgstr ""
 msgid "Search:"
 msgstr "Busca:"
 
+# | msgid "Search:"
 #: amazonianvoices/__init__.py:46
 #, fuzzy
-#| msgid "Search:"
 msgid "Search"
 msgstr "Busca:"
 
@@ -252,15 +255,19 @@ msgstr "Se puede acceder a todas las versiones publicadas a través de"
 msgid "on ZENODO as well"
 msgstr "también en ZENODO"
 
-#: amazonianvoices/templates/dataset/detail_html.mako:19
+#: amazonianvoices/templates/dataset/detail_html.mako:16
+msgid "Statistics"
+msgstr "Estadísticas"
+
+#: amazonianvoices/templates/dataset/detail_html.mako:39
 msgid "Welcome to"
 msgstr "Bienvenido a"
 
-#: amazonianvoices/templates/dataset/detail_html.mako:22
+#: amazonianvoices/templates/dataset/detail_html.mako:42
 msgid "Amazonian Voices presents phonetically-transcribed primary recordings."
 msgstr "Amazonian Voices presenta grabaciones primarias transcritas fonéticamente."
 
-#: amazonianvoices/templates/dataset/detail_html.mako:26
+#: amazonianvoices/templates/dataset/detail_html.mako:46
 msgid "Cite the Amazonian Voices dataset as"
 msgstr "Cite el conjunto de datos Amazonian Voices como"
 
@@ -282,5 +289,9 @@ msgstr ""
 
 # | msgid "Word"
 #~ msgid "Words"
-#~ msgstr "Palabras"
+#~ msgstr "Palabra"
+
+# | msgid "# concepts"
+#~ msgid "Concepts"
+#~ msgstr "# conceptos"
 
