@@ -6,7 +6,7 @@ from clldutils.color import qualitative_colors
 from clldutils.misc import nfilter
 from clldutils.misc import slug
 from clldutils import licenses
-from clld.cliutil import Data, bibtex2source
+from clld.cliutil import Data, bibtex2source, add_language_codes
 from clld.db.meta import DBSession
 from clld.db.models import common
 from clld.lib import bibtex
@@ -17,6 +17,7 @@ from clld_audio_plugin import util as audioutil
 from pyclts import CLTS
 from sqlalchemy import func
 from sqlalchemy.orm import joinedload
+from pyglottolog import Glottolog
 
 import amazonianvoices
 from amazonianvoices import models
@@ -68,6 +69,9 @@ def main(args):  # pragma: no cover
 
     contribs = collections.defaultdict(lambda: collections.defaultdict(list))
 
+    glc_api = Glottolog(args.glottolog)
+    languoids_by_code = glc_api.languoids_by_code()
+
     for lang in args.cldf.iter_rows('LanguageTable', 'id', 'glottocode', 'name', 'latitude', 'longitude', 'Family'):
         contrib = data.add(
             common.Contribution,
@@ -75,7 +79,7 @@ def main(args):  # pragma: no cover
             id=lang['id'],
             name='Wordlist for {}'.format(lang['name']),
         )
-        data.add(
+        clg = data.add(
             models.Variety,
             lang['id'],
             id=lang['id'],
@@ -86,6 +90,11 @@ def main(args):  # pragma: no cover
             family = lang['Family'],
             contribution=contrib,
         )
+
+        glc_language = languoids_by_code.get(lang['glottocode'], None)
+        if glc_language:
+            add_language_codes(
+                        data, clg, glc_language.iso, glottocode=glc_language.id)
 
     colors = dict(zip(
         set(lg.family for lg in data['Variety'].values()),

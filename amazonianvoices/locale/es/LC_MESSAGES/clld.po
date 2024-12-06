@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: amazonianvoices 0.0\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-10-10 15:22+0200\n"
+"POT-Creation-Date: 2024-12-06 10:22+0100\n"
 "PO-Revision-Date: 2024-09-18 17:21+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es\n"
@@ -29,8 +29,8 @@ msgstr "Idiomas"
 msgid "Parameters"
 msgstr "Conceptos"
 
-#: amazonianvoices/__init__.py:14 amazonianvoices/datatables.py:123
-#: amazonianvoices/datatables.py:142
+#: amazonianvoices/__init__.py:14 amazonianvoices/datatables.py:135
+#: amazonianvoices/datatables.py:159
 #: amazonianvoices/templates/language/detail_html.mako:4
 #: amazonianvoices/templates/language/detail_html.mako:6
 #: amazonianvoices/templates/value/detail_html.mako:10
@@ -62,8 +62,9 @@ msgid "Value"
 msgstr "Palabra"
 
 #: amazonianvoices/__init__.py:18
+#: amazonianvoices/templates/language/detail_html.mako:53
 msgid "Contributors"
-msgstr ""
+msgstr "Colaboradores"
 
 #: amazonianvoices/__init__.py:19
 msgid "Download"
@@ -75,7 +76,7 @@ msgstr "Contacto"
 
 #: amazonianvoices/__init__.py:21
 msgid "Credits"
-msgstr ""
+msgstr "Créditos"
 
 #: amazonianvoices/__init__.py:22
 msgid "Legal"
@@ -101,133 +102,139 @@ msgstr "Longitud"
 msgid "Map"
 msgstr "Mapa"
 
-#: amazonianvoices/__init__.py:30
+#: amazonianvoices/__init__.py:28
+msgid "Alternative names"
+msgstr "Nombres alternativos"
+
+#: amazonianvoices/__init__.py:31
 msgid "Icon size"
 msgstr "Tamaño del icono"
 
-#: amazonianvoices/__init__.py:31
+#: amazonianvoices/__init__.py:32
 msgid "Show/hide Labels"
 msgstr "Mostrar/ocultar Labels"
 
-#: amazonianvoices/__init__.py:34
+#: amazonianvoices/__init__.py:35
 msgid "Next"
 msgstr "Próximo"
 
-#: amazonianvoices/__init__.py:35
+#: amazonianvoices/__init__.py:36
 msgid "Previous"
 msgstr "Anterior"
 
-#: amazonianvoices/__init__.py:36
-msgid "First"
-msgstr ""
-
 #: amazonianvoices/__init__.py:37
-msgid "Last"
-msgstr ""
+msgid "First"
+msgstr "Primera"
 
 #: amazonianvoices/__init__.py:38
-msgid "No data available in table"
-msgstr ""
+msgid "Last"
+msgstr "Última"
 
 #: amazonianvoices/__init__.py:39
+msgid "No data available in table"
+msgstr "No hay datos disponibles en la tabla"
+
+#: amazonianvoices/__init__.py:40
 msgid "Showing _START_ to _END_ of _TOTAL_ entries"
 msgstr "Mostrando entradas desde _START_ hasta _END_ de _TOTAL_"
 
-#: amazonianvoices/__init__.py:40
+#: amazonianvoices/__init__.py:41
 msgid "Showing 0 to 0 of 0 entries"
 msgstr "Mostrando 0 a 0 de 0 entradas"
 
-#: amazonianvoices/__init__.py:41
+#: amazonianvoices/__init__.py:42
 msgid "(filtered from _MAX_ total entries)"
 msgstr "filtrado de _MAX_ entradas totales"
 
-#: amazonianvoices/__init__.py:42
+#: amazonianvoices/__init__.py:43
 msgid "Show _MENU_ entries"
 msgstr "Mostrar _MENU_ entradas"
 
-#: amazonianvoices/__init__.py:43
+#: amazonianvoices/__init__.py:44
 msgid "Loading..."
 msgstr "Cargando..."
 
-#: amazonianvoices/__init__.py:44
-msgid "Processing..."
-msgstr ""
-
 #: amazonianvoices/__init__.py:45
+msgid "Processing..."
+msgstr "Procesamiento..."
+
+#: amazonianvoices/__init__.py:46
 msgid "Search:"
 msgstr "Busca:"
 
 # | msgid "Search:"
-#: amazonianvoices/__init__.py:46
+#: amazonianvoices/__init__.py:47
 #, fuzzy
 msgid "Search"
 msgstr "Busca:"
 
-#: amazonianvoices/__init__.py:47
+#: amazonianvoices/__init__.py:48
 msgid "No matching records found"
 msgstr "No se han encontrado registros coincidentes"
 
-#: amazonianvoices/datatables.py:47 amazonianvoices/datatables.py:152
+#: amazonianvoices/datatables.py:54 amazonianvoices/datatables.py:177
 msgid "Name"
 msgstr "Nombre"
 
-#: amazonianvoices/datatables.py:52
-#: amazonianvoices/templates/language/detail_html.mako:64
+#: amazonianvoices/datatables.py:59 amazonianvoices/datatables.py:141
+#: amazonianvoices/datatables.py:165
+#: amazonianvoices/templates/language/detail_html.mako:63
 msgid "Family"
 msgstr "Familia lingüística"
 
-#: amazonianvoices/datatables.py:56
+#: amazonianvoices/datatables.py:63
 msgid "# concepts"
 msgstr "# conceptos"
 
-#: amazonianvoices/datatables.py:57
+#: amazonianvoices/datatables.py:64
 msgid "number of concepts per language"
 msgstr "número de conceptos por idioma"
 
-#: amazonianvoices/datatables.py:60 amazonianvoices/datatables.py:171
+#: amazonianvoices/datatables.py:67 amazonianvoices/datatables.py:196
 msgid "# words"
 msgstr "# palabras"
 
-#: amazonianvoices/datatables.py:61
+#: amazonianvoices/datatables.py:68
 msgid "number of words per language"
 msgstr "número de palabras por idioma"
 
-#: amazonianvoices/datatables.py:64
+#: amazonianvoices/datatables.py:71
 msgid "# audio"
 msgstr ""
 
-#: amazonianvoices/datatables.py:65
+#: amazonianvoices/datatables.py:72
 msgid "number of sound files per language"
 msgstr "número de archivos de sonido por idioma"
 
-#: amazonianvoices/datatables.py:101 amazonianvoices/datatables.py:133
-#: amazonianvoices/datatables.py:168
+#: amazonianvoices/datatables.py:113 amazonianvoices/datatables.py:150
+#: amazonianvoices/datatables.py:193
 msgid "English"
 msgstr "Inglés"
 
-#: amazonianvoices/datatables.py:106 amazonianvoices/datatables.py:138
-#: amazonianvoices/datatables.py:176
+#: amazonianvoices/datatables.py:118 amazonianvoices/datatables.py:155
+#: amazonianvoices/datatables.py:201
 msgid "Semantic Field"
 msgstr "Campo semántico"
 
-#: amazonianvoices/datatables.py:112 amazonianvoices/datatables.py:169
+#: amazonianvoices/datatables.py:124 amazonianvoices/datatables.py:194
 msgid "Spanish"
 msgstr "Español"
 
-#: amazonianvoices/datatables.py:115 amazonianvoices/datatables.py:121
-#: amazonianvoices/datatables.py:130
+#: amazonianvoices/datatables.py:127 amazonianvoices/datatables.py:133
+#: amazonianvoices/datatables.py:168
 msgid "Word"
 msgstr "Palabra"
 
-#: amazonianvoices/datatables.py:116 amazonianvoices/datatables.py:122
+#: amazonianvoices/datatables.py:128 amazonianvoices/datatables.py:134
+#: amazonianvoices/datatables.py:169
 msgid "Segments"
 msgstr "Segmentos"
 
-#: amazonianvoices/datatables.py:153
+#: amazonianvoices/datatables.py:178
 msgid "Role"
-msgstr ""
+msgstr "Papel"
 
-#: amazonianvoices/datatables.py:172
+#: amazonianvoices/datatables.py:197
 msgid "number of words per concept"
 msgstr "número de palabras por concepto"
 

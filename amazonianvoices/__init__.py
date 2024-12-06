@@ -25,6 +25,7 @@ _('You can contact us via email at')
 _('Latitude')
 _('Longitude')
 _('Map')
+_('Alternative names')
 
 # Maps
 _('Icon size')

@@ -33,7 +33,14 @@ class LongTableMixin:
 
 class FamilyCol(Col):
     def format(self, item):
-        return HTML.div(map_marker_img(self.dt.req, item), ' ', HTML.span(item.family))
+        try:
+            return HTML.div(map_marker_img(self.dt.req, item), ' ', HTML.span(item.family))
+        except Exception:
+            return HTML.div(map_marker_img(
+                self.dt.req,
+                item.valueset.language),
+                ' ',
+                HTML.span(item.valueset.language.family))
 
 
 class Languages(LongTableMixin, datatables.Languages):
@@ -90,7 +97,12 @@ class Words(LongTableMixin, Values):
 
     def get_default_options(self):
         opts = super(Values, self).get_default_options()
-        opts['aaSorting'] = [[0, 'asc']]
+        if not self.language and not self.parameter:
+            opts['aaSorting'] = [[0, 'asc'], [3, 'asc'], [2, 'asc']]
+        elif self.parameter:
+            opts['aaSorting'] = [[3, 'asc'], [2, 'asc'], [0, 'asc']]
+        else:
+            opts['aaSorting'] = [[0, 'asc'], [3, 'asc']]
         return opts
 
     def col_defs(self):
@@ -123,11 +135,16 @@ class Words(LongTableMixin, Values):
                 LinkCol(self, 'language', sTitle=self.req._('Language'),
                         model_col=common.Language.name,
                         get_object=lambda v: v.valueset.language),
+                FamilyCol(
+                    self,
+                    'family',
+                    sTitle=self.req._('Family'),
+                    model_col=models.Variety.family,
+                    choices=get_distinct_values(models.Variety.family)),
                 LinkToMapCol(self, 'm', get_object=lambda i: i.valueset.language),
                 AudioCol(self, '#', bSearchable=False, bSortable=False),
             ]
         return [
-            LinkCol(self, 'name', sTitle=self.req._('Word')),
             LinkCol(self,
                     'name',
                     sTitle=self.req._('English'),
@@ -142,6 +159,14 @@ class Words(LongTableMixin, Values):
             LinkCol(self, 'language', sTitle=self.req._('Language'),
                     model_col=common.Language.name,
                     get_object=lambda v: v.valueset.language),
+            FamilyCol(
+                self,
+                'family',
+                sTitle=self.req._('Family'),
+                model_col=models.Variety.family,
+                choices=get_distinct_values(models.Variety.family)),
+            LinkCol(self, 'name', sTitle=self.req._('Word')),
+            Col(self, 'description', sTitle=self.req._('Segments')),
             AudioCol(self, '#', bSearchable=False, bSortable=False),
         ]
 

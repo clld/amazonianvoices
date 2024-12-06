@@ -50,7 +50,7 @@
 <%def name="sidebar()">
     ${util.codes(ctx)}
     % if ctx.contribution.contributor_assocs:
-        <h4>Contributors</h4>
+        <h4>${_('Contributors')}</h4>
         <ul class="unstyled">
             % for ca in ctx.contribution.contributor_assocs:
                 <li>
@@ -59,8 +59,8 @@
             % endfor
         </ul>
     % endif
-    ${util.language_meta()}
     % if ctx.family:
         <strong>${_('Family')}</strong>: ${ctx.family}
     % endif
+    ${util.language_meta()}
 </%def>
