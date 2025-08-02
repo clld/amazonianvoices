@@ -49,7 +49,8 @@ def main(args):  # pragma: no cover
     )
     form2audio = audioutil.form2audio(args.cldf, 'audio/mpeg')
 
-    r = get_dataset('amazonianvoices', ep='lexibank.dataset')
+    #r = get_dataset('amazonianvoices', ep='lexibank.dataset')
+    r = get_dataset('../amazonianvoices-cldf/lexibank_amazonianvoices.py')
     authors, _ = r.get_creators_and_contributors()
     for ord, author in enumerate(authors):
         cid = slug(HumanName(author['name']).last)

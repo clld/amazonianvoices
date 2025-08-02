@@ -12,28 +12,12 @@
     <div class="well">
         <img src="${req.static_url('amazonianvoices:static/ico-AmazonianVoices.jpg')}" class="img-rounded">
     </div>
-    <div style="float:left;margin:10px;margin-top:60px">
-        <h4>${_('Statistics')}</h4>
-        <table class="table table-condensed">
-            <tbody>
-            <tr>
-                <th>${_('Languages')}</th>
-                <td class="right">${'{:,}'.format(stats['language'])}</td>
-            </tr>
-            <tr>
-                <th>${_('Parameters')}</th>
-                <td class="right">${'{:,}'.format(stats['parameter'])}</td>
-            </tr>
-            <tr>
-                <th>${_('Values')}</th>
-                <td class="right">${'{:,}'.format(stats['value'])}</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    
 </%def>
 
+
+<div style="float:left;margin-top:10px; margin-right: 1em;">
+    <img src="${req.static_url('amazonianvoices:static/Amazon_Voices_negro.png')}" width=150 alt="Logo"/>
+</div>
 
 <div id="with-background">
     <h2>${_('Welcome to')} Amazonian Voices</h2>
@@ -42,10 +26,11 @@
         ${_('Amazonian Voices presents phonetically-transcribed primary recordings.')}
     </p>
 
-    <p>
+    <p style="clear: left">
         ${_('Cite the Amazonian Voices dataset as')}
     </p>
     <blockquote>
-        
+        Alonso Vásquez-Aguilar, Roberto Zariquiey, Mariana Poblete, Hans-Jörg Bibiko, Raquel Cabrera, Minerva Cerna, Jorge Pérez Silva, Robert Forkel, Russell Gray.
+        (2025) Amazonian Voices.
     </blockquote>
 </div>
