@@ -8,7 +8,7 @@ from clld.web.datatables.parameter import Parameters
 from clld.web.util import concepticon
 from clld.web.util.glottolog import url
 from clld.web.util.htmllib import HTML
-from clld.web.util.helpers import map_marker_img
+from clld.web.util.helpers import map_marker_img, external_link
 from clld.db.models import common
 from clld.db.util import get_distinct_values, icontains
 from clld_audio_plugin.datatables import AudioCol
@@ -187,6 +187,13 @@ class ConcepticonCol(Col):
         return or_(icontains(models.Concept.concepticon_gloss, qs), models.Concept.concepticon_id.__eq__(qs))
 
 
+class GBIFLinkCol(Col):
+    def format(self, item):
+        if item.gbif_key:
+            return external_link(f'https://gbif.org/species/{item.gbif_key}', label=item.gbif_name)
+        return ''
+
+
 class Concepts(LongTableMixin, Parameters):
     def col_defs(self):
         return [
@@ -195,12 +202,18 @@ class Concepts(LongTableMixin, Parameters):
             Col(self, 'count_lexemes',
                 sTitle=self.req._('# words'),
                 sTooltip=self.req._('number of words per concept'),
+                input_size='mini',
                 model_col=models.Concept.count_lexemes),
             # ConcepticonCol(self, 'concepticon'),
             Col(self, 'concepticon_semantic_field',
                 sTitle=self.req._('Semantic Field'),
                 model_col=models.Concept.concepticon_semantic_field,
                 choices=get_distinct_values(models.Concept.concepticon_semantic_field)),
+            GBIFLinkCol(
+                self,
+                'gbif_name',
+                sTitle='Scientific name',
+                model_col=models.Concept.gbif_name),
         ]
 
 

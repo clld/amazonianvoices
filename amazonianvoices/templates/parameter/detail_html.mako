@@ -21,10 +21,20 @@
         <h2>${_('Parameter')} "${ctx.name}"</h2>
     %endif
 %endif
+
 % if ctx.scientific_name:
+<p>
     <i>Lat.: ${ctx.scientific_name}</i>
+</p>
 % endif
+
 <div style="clear: both"/>
 ${(map_ or request.map).render()}
 
 ${request.get_datatable('values', h.models.Value, parameter=ctx).render()}
+
+<%block name="javascript">
+% if ctx.gbif_key:
+    var taxa = ${u.json.dumps({ctx.gbif_name: ctx.gbif_key})|n};
+% endif
+</%block>

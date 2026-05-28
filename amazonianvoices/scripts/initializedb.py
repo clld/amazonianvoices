@@ -62,46 +62,47 @@ def main(args):  # pragma: no cover
             description=author.get('description'),
         )
 
-    for ord, cid in enumerate(['vasquez', 'zariquiey', 'bibiko', 'gray']):
+    for ord, cid in enumerate(['vasquezaguilar', 'zariquiey', 'gray']):
         DBSession.add(common.Editor(
             ord=ord,
             dataset=ds,
             contributor=data['Contributor'][cid]))
 
-    contribs = collections.defaultdict(lambda: collections.defaultdict(list))
-
     glc_api = Glottolog(args.glottolog)
     languoids_by_code = glc_api.languoids_by_code()
 
-    for lang in args.cldf.iter_rows('LanguageTable', 'id', 'glottocode', 'name', 'latitude', 'longitude', 'Family'):
+    for lang in args.cldf.objects('LanguageTable'):
         contrib = data.add(
             common.Contribution,
-            lang['id'],
-            id=lang['id'],
-            name='Wordlist for {}'.format(lang['name']),
+            lang.id,
+            id=lang.id,
+            name='Wordlist for {}'.format(lang.cldf.name),
         )
         clg = data.add(
             models.Variety,
-            lang['id'],
-            id=lang['id'],
-            name=lang['name'],
-            latitude=lang['latitude'],
-            longitude=lang['longitude'],
-            glottocode=lang['glottocode'],
-            family = lang['Family'],
+            lang.id,
+            id=lang.id,
+            name=lang.cldf.name,
+            latitude=lang.cldf.latitude,
+            longitude=lang.cldf.longitude,
+            glottocode=lang.cldf.glottocode,
+            family = lang.data['Family'],
             contribution=contrib,
+            jsondata={'area': lang.speaker_area_as_geojson_feature},
         )
 
-        glc_language = languoids_by_code.get(lang['glottocode'], None)
+        glc_language = languoids_by_code.get(lang.cldf.glottocode, None)
         if glc_language:
-            add_language_codes(
-                        data, clg, glc_language.iso, glottocode=glc_language.id)
+            add_language_codes(data, clg, glc_language.iso, glottocode=glc_language.id)
 
     colors = dict(zip(
         set(lg.family for lg in data['Variety'].values()),
         qualitative_colors(len(set(lg.family for lg in data['Variety'].values())))))
     for lg in data['Variety'].values():
-        lg.jsondata = dict(color=colors[lg.family].replace('#', ''))
+        area = lg.jsondata['area']
+        area['properties']['title'] = lg.name
+        area['properties']['fill'] = colors[lg.family]
+        lg.update_jsondata(color=colors[lg.family].replace('#', ''), area=area)
 
     refs = collections.defaultdict(list)
 
@@ -116,6 +117,12 @@ def main(args):  # pragma: no cover
             concepticon_gloss=param['Concepticon_Gloss'],
             scientific_name=param['Scientific_Name'],
             concepticon_semantic_field=param['Concepticon_SemanticField'],
+            gbif_name=param['GBIF_Name'],
+            gbif_key=param['GBIF_Key'],
+            gbif_rank=param['GBIF_Rank'],
+            gbif_kingdom=param['GBIF_Kingdom'],
+            gbif_phylum=param['GBIF_Phylum'],
+            gbif_class=param['GBIF_Class'],
         )
 
     inventories = collections.defaultdict(collections.Counter)
@@ -142,7 +149,7 @@ def main(args):  # pragma: no cover
             name=form['form'].replace('_', ' '),
             description=' '.join(form['segments']),
             valueset=vs,
-            audio=form2audio.get(form['id'])
+            audio=str(form2audio.get(form['id']))
         )
 
     for (vsid, sid), pages in refs.items():

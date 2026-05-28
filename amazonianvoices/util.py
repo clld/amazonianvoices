@@ -1,5 +1,9 @@
+import json
+
 from pyclts.ipachart import VowelTrapezoid, PulmonicConsonants
 from clld import RESOURCES
+
+assert json
 
 
 def language_detail_html(context=None, request=None, **kw):
