@@ -4,7 +4,7 @@ AMAZONIANVOICES.style = function(feature) {
     return {
             'color': '#000',
             'weight': 1,
-            'opacity': 0.3,
+            'opacity': 0.6,
             'fillOpacity': 0.3,
             'fillColor': feature.properties.fill
     }
