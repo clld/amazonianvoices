@@ -1,12 +1,6 @@
 <%inherit file="app.mako"/>
 
-##
-## define app-level blocks:
-##
 <%block name="header">
-    ##<a href="${request.route_url('dataset')}">
-    ##    <img src="${request.static_url('amazonianvoices:static/header.gif')}"/>
-    ##</a>
         <style>
         #html {
             min-height: 99%; /* or whatever your desired height is */

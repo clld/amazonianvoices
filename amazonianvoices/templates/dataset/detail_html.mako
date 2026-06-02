@@ -16,7 +16,7 @@
 
 
 <div style="float:left;margin-top:10px; margin-right: 1em;">
-    <img src="${req.static_url('amazonianvoices:static/Amazon_Voices_negro.png')}" width=150 alt="Logo"/>
+    <img src="${req.static_url('amazonianvoices:static/Amazonian_voices_logo.svg')}" width=200 alt="Logo"/>
 </div>
 
 <div id="with-background">
