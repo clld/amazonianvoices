@@ -70,5 +70,4 @@ def main(global_config, **settings):
     config.include('clldmpg')
     config.include('clld_audio_plugin')
     config.registry.registerUtility(LanguageByFamilyMapMarker(), IMapMarker)
-    config.register_map('parameter', maps.ConceptMap)
     return config.make_wsgi_app()
