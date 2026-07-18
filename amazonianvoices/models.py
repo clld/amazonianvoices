@@ -11,11 +11,11 @@ from sqlalchemy.orm import relationship, backref
 from clld import interfaces
 from clld.db.meta import Base, CustomModelMixin
 from clld.db.models import common
-from pyclts.ipachart import Segment
+from clld_ipachart_plugin.models import InventoryMixin
 
 
 @implementer(interfaces.ILanguage)
-class Variety(CustomModelMixin, common.Language):
+class Variety(CustomModelMixin, common.Language, InventoryMixin):
     pk = Column(Integer, ForeignKey('language.pk'), primary_key=True)
     glottocode = Column(Unicode)
     family = Column(Unicode)
@@ -24,14 +24,6 @@ class Variety(CustomModelMixin, common.Language):
     count_lexemes = Column(Integer)
     count_concepts = Column(Integer)
     count_soundfiles = Column(Integer)
-
-    @property
-    def inventory(self):
-        return [Segment(
-            sound_bipa=k,
-            sound_name=v,
-            href='https://clts.clld.org/parameters/{}'.format(v.replace(' ', '_')),
-        ) for k, v in self.jsondata['inventory']]
 
 
 @implementer(interfaces.IParameter)

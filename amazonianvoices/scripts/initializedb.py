@@ -1,20 +1,18 @@
-import pathlib
 import collections
 
-from pycldf import Sources, Wordlist
+from pycldf import Sources
 from clldutils.color import qualitative_colors
 from clldutils.misc import nfilter
 from clldutils.misc import slug
 from clldutils import licenses
-from clld.cliutil import Data, bibtex2source, add_language_codes
+from clld.cliutil import Data, add_language_codes
 from clld.db.meta import DBSession
 from clld.db.models import common
-from clld.lib import bibtex
 from nameparser import HumanName
 from cldfbench import get_dataset
 from clld_audio_plugin.models import Counterpart
 from clld_audio_plugin import util as audioutil
-from pyclts import CLTS
+from clld_ipachart_plugin.util import load_inventories, clts_from_input
 from sqlalchemy import func
 from sqlalchemy.orm import joinedload
 from pyglottolog import Glottolog
@@ -27,8 +25,7 @@ def main(args):  # pragma: no cover
     license = licenses.find(args.cldf.properties['dc:license'])
     assert license and license.id.startswith('CC-')
 
-    clts = CLTS(input('Path to cldf-clts/clts:') or '../../cldf-clts/clts-data')
-
+    clts = clts_from_input('../../cldf-clts/clts-data')
     data = Data()
     ds = data.add(
         common.Dataset,
@@ -42,19 +39,16 @@ def main(args):  # pragma: no cover
         publisher_url="https://www.eva.mpg.de",
         license=license.url,
         jsondata={
-            'license_icon': '{}.png'.format(
-                '-'.join([p.lower() for p in license.id.split('-')[:-1]])),
+            'license_icon': f"{'-'.join([p.lower() for p in license.id.split('-')[:-1]])}.png",
             'license_name': license.name},
-
     )
     form2audio = audioutil.form2audio(args.cldf, 'audio/mpeg')
 
-    #r = get_dataset('amazonianvoices', ep='lexibank.dataset')
-    r = get_dataset('../amazonianvoices-cldf/lexibank_amazonianvoices.py')
+    r = get_dataset(args.cldf.directory.parent / 'lexibank_amazonianvoices.py')
     authors, _ = r.get_creators_and_contributors()
     for ord, author in enumerate(authors):
         cid = slug(HumanName(author['name']).last)
-        c = data.add(
+        data.add(
             common.Contributor,
             cid,
             id=cid,
@@ -73,11 +67,7 @@ def main(args):  # pragma: no cover
 
     for lang in args.cldf.objects('LanguageTable'):
         contrib = data.add(
-            common.Contribution,
-            lang.id,
-            id=lang.id,
-            name='Wordlist for {}'.format(lang.cldf.name),
-        )
+            common.Contribution, lang.id, id=lang.id, name=f'Wordlist for {lang.cldf.name}')
         clg = data.add(
             models.Variety,
             lang.id,
@@ -106,7 +96,7 @@ def main(args):  # pragma: no cover
 
     refs = collections.defaultdict(list)
 
-    for param in args.cldf.iter_rows('ParameterTable', 'id', 'concepticonReference', 'name', 'Scientific_Name', ):
+    for param in args.cldf.iter_rows('ParameterTable', 'id', 'concepticonReference', 'name', 'Scientific_Name'):
         data.add(
             models.Concept,
             param['id'],
@@ -158,11 +148,7 @@ def main(args):  # pragma: no cover
             source=data['Source'][sid],
             description='; '.join(nfilter(pages))
         ))
-
-    for lid, inv in inventories.items():
-        inv = [clts.bipa[c] for c in inv]
-        data['Variety'][lid].update_jsondata(
-            inventory=[(str(c), c.name) for c in inv if getattr(c, 'name', None)])
+    load_inventories(args.cldf, clts, data['Variety'])
 
 
 def prime_cache(args):
