@@ -26,10 +26,10 @@ setup(
         'clld-ipachart-plugin',
         'pyglottolog>=4',
         'clldmpg>=4.3.0',
-
-],
+        'psycopg2',
+    ],
 extras_require={
-        'dev': ['flake8', 'waitress', 'psycopg2'],
+        'dev': ['flake8', 'waitress'],
         'test': [
             'pytest>=7.4.2',
             'pytest-clld>=1.2',
@@ -39,6 +39,10 @@ extras_require={
             'selenium',
             'zope.component>=3.11.0',
         ],
+        'init': [
+            'openpyxl',
+            'pylexibank',
+        ]
     },
     test_suite="amazonianvoices",
     message_extractors={'amazonianvoices': [
