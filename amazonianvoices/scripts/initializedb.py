@@ -11,7 +11,6 @@ from clld.db.models import common
 from nameparser import HumanName
 from cldfbench import get_dataset
 from clld_audio_plugin.models import Counterpart
-from clld_audio_plugin import util as audioutil
 from clld_ipachart_plugin.util import load_inventories, clts_from_input
 from sqlalchemy import func
 from sqlalchemy.orm import joinedload
@@ -42,8 +41,6 @@ def main(args):  # pragma: no cover
             'license_icon': f"{'-'.join([p.lower() for p in license.id.split('-')[:-1]])}.png",
             'license_name': license.name},
     )
-    form2audio = audioutil.form2audio(args.cldf, 'audio/mpeg')
-
     r = get_dataset(args.cldf.directory.parent / 'lexibank_amazonianvoices.py')
     authors, _ = r.get_creators_and_contributors()
     for ord, author in enumerate(authors):
@@ -115,6 +112,8 @@ def main(args):  # pragma: no cover
             gbif_class=param['GBIF_Class'],
         )
 
+    mp3s = {r['ID']: r for r in args.cldf['MediaTable'] if r['Media_Type'] == 'audio/mpeg'}
+
     inventories = collections.defaultdict(collections.Counter)
     for form in args.cldf.iter_rows('FormTable', 'id', 'form', 'segments', 'languageReference', 'parameterReference', 'source'):
         inventories[form['languageReference']].update(form['Segments'])
@@ -132,6 +131,15 @@ def main(args):  # pragma: no cover
         for ref in form.get('source', []):
             sid, pages = Sources.parse(ref)
             refs[(vsid, sid)].append(pages)
+        mp3url = None
+        if form['Audio_IDs']:
+            for aid in form['Audio_IDs']:
+                if aid in mp3s:
+                    mp3url = f'https://s3.nexus.mpcdf.mpg.de/eva-dlce-amazonianvoices/{aid}.mp3'
+                    break
+            else:
+                raise ValueError(f'no suitable mp3 found for {form}')
+
         data.add(
             Counterpart,
             form['id'],
@@ -139,7 +147,7 @@ def main(args):  # pragma: no cover
             name=form['form'].replace('_', ' '),
             description=' '.join(form['segments']),
             valueset=vs,
-            audio=str(form2audio.get(form['id']))
+            audio=mp3url,
         )
 
     for (vsid, sid), pages in refs.items():
