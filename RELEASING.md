@@ -2,13 +2,16 @@
 
 ```shell
 git clone https://github.com/clld/amazonianvoices
+git clone --branch v1.0 --depth 1 https://github.com/lexibank/amazonianvoices amazonianvoices-cldf
+git clone --branch v5.3 --depth 1 https://github.com/glottolog/glottolog
+git clone --branch v2.3.1 --depth 1 https://github.com/cldf-clts/clts
 cd amazonianvoices
 pip install -e .[test,init]
 ```
 
 Recreate the database from the CLDF data:
 ```shell
-clld initdb development.ini --cldf ../../amazonianvoices/amazonianvoices-cldf/cldf/cldf-metadata.json --glottolog ../../glottolog/glottolog
+clld initdb development.ini --cldf ../amazonianvoices-cldf/cldf/cldf-metadata.json --glottolog ../glottolog
 ```
 
 ```shell
@@ -22,8 +25,6 @@ pip freeze > requirements.txt
 
 Store a db dump:
 ```shell
-pg_dump -xO amazonianvoices > amazonianvoices.sql
-zip amazonianvoices.sql.zip amazonianvoices.sql
-rm amazonianvoices.sql
+pg_dump -xO --compress gzip:9 amazonianvoices > amazonianvoices.sql.gz
 ```
 

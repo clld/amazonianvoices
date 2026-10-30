@@ -24,7 +24,7 @@ def main(args):  # pragma: no cover
     license = licenses.find(args.cldf.properties['dc:license'])
     assert license and license.id.startswith('CC-')
 
-    clts = clts_from_input('../../cldf-clts/clts-data')
+    clts = clts_from_input('../clts')
     data = Data()
     ds = data.add(
         common.Dataset,
