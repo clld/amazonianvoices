@@ -30,7 +30,6 @@
         ${_('Cite the Amazonian Voices dataset as')}
     </p>
     <blockquote>
-        Alonso Vásquez-Aguilar, Roberto Zariquiey, Mariana Poblete, Hans-Jörg Bibiko, Raquel Cabrera, Minerva Cerna, Jorge Pérez Silva, Robert Forkel, Russell Gray.
-        (2025) Amazonian Voices.
+Alonso Vásquez, Roberto Zariquiey, Mariana Poblete, Hans-Jörg Bibiko, Frederic Blum, Raquel Cabrera, Minerva Cerna, Jorge Pérez Silva, Robert Forkel, & Russell Gray. (2026). Amazonian Voices (Version v1.0) [Dataset]. Zenodo. https://doi.org/10.5281/zenodo.23467623
     </blockquote>
 </div>
