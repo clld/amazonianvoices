@@ -8,13 +8,14 @@ from clldutils import licenses
 from clld.cliutil import Data, add_language_codes
 from clld.db.meta import DBSession
 from clld.db.models import common
-from nameparser import HumanName
+import nameparser
 from cldfbench import get_dataset
 from clld_audio_plugin.models import Counterpart
-from clld_ipachart_plugin.util import load_inventories, clts_from_input
+from clld_ipachart_plugin.util import load_inventories
 from sqlalchemy import func
 from sqlalchemy.orm import joinedload
 from pyglottolog import Glottolog
+from pyclts import CLTS
 
 import amazonianvoices
 from amazonianvoices import models
@@ -24,7 +25,7 @@ def main(args):  # pragma: no cover
     license = licenses.find(args.cldf.properties['dc:license'])
     assert license and license.id.startswith('CC-')
 
-    clts = clts_from_input('../clts')
+    clts = CLTS(args.clts)
     data = Data()
     ds = data.add(
         common.Dataset,
@@ -44,14 +45,14 @@ def main(args):  # pragma: no cover
     r = get_dataset(args.cldf.directory.parent / 'lexibank_amazonianvoices.py')
     authors, _ = r.get_creators_and_contributors()
     for ord, author in enumerate(authors):
-        cid = slug(HumanName(author['name']).last)
-        data.add(
+        cid = slug(nameparser.parse(author['name']).family)
+        DBSession.add(data.add(
             common.Contributor,
             cid,
             id=cid,
             name=author['name'],
             description=author.get('description'),
-        )
+        ))
 
     for ord, cid in enumerate(['vasquezaguilar', 'zariquiey', 'gray']):
         DBSession.add(common.Editor(

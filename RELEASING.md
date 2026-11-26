@@ -11,7 +11,7 @@ pip install -e .[test,init]
 
 Recreate the database from the CLDF data:
 ```shell
-clld initdb development.ini --cldf ../amazonianvoices-cldf/cldf/cldf-metadata.json --glottolog ../glottolog
+clld initdb development.ini --cldf ../amazonianvoices-cldf/cldf/cldf-metadata.json --glottolog ../../glottolog/glottolog --clts ../../cldf-clts/clts-data
 ```
 
 ```shell
